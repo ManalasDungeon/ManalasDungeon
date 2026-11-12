@@ -2,94 +2,112 @@
 
 # Marko Nakari (Mana)
 
-**Software Developer** · Heinola, Finland · Open to roles in Latvia (Vidzeme region or remote)
+**Software developer** · Heinola, Finland · Looking for work in Latvia — Riga, Vidzeme or remote
 
-[🌐 manalasdungeon.lv](https://manalasdungeon.lv) · [✉️ marko.nakari@inbox.lv](mailto:marko.nakari@inbox.lv) · [💼 LinkedIn](https://www.linkedin.com/in/manalainen/) · [🐙 GitHub](https://github.com/ManalasDungeon)
+[🌐 manalasdungeon.lv](https://manalasdungeon.lv) · [📁 Portfolio](https://manalasdungeon.lv/portfolio.php?lang=en) · [🔗 Links](https://manalasdungeon.lv/linkit?lang=en) · [✉️ marko.nakari@inbox.lv](mailto:marko.nakari@inbox.lv) · [💼 LinkedIn](https://www.linkedin.com/in/manalainen/) · [🐙 GitHub](https://github.com/ManalasDungeon)
 
 ---
 
 ## About me
 
-Software developer who graduated from **Vamia** on **1 October 2026**. I have worked at Heinola Library in Finland since 2006, and as a media instructor since April 2025. Alongside library work I have built software that library visitors use.
+Software developer, graduated from **Vamia** on 1 October 2026. I have worked at Heinola library in Finland since 2006, and as a media instructor since April 2025. Alongside my library work I have built software that the library’s visitors use.
 
-My strongest area is **PHP/MySQL web development on LAMP and shared hosting** (cPanel, phpMyAdmin, Apache configuration). I also build desktop applications in C#/.NET. I care about secure code, testing and fast, well-indexed websites.
+My strongest area is **PHP/MySQL web development in LAMP environments and on shared hosting** (cPanel, phpMyAdmin, Apache configuration). I also build desktop applications with C#/.NET. I care about secure code, testing and fast, well-indexed websites.
 
 ## Work experience
 
 | | |
 |---|---|
-| **Media Instructor (Mediaohjaaja)** | Heinola Library · 04/2025 – present |
-| **Library Clerk (Kirjastovirkailija)** | Heinola Library · 2006 – 2025 |
+| **Media instructor (Mediaohjaaja)** | Heinola library · 04/2025 – present |
+| **Library clerk (Kirjastovirkailija)** | Heinola library · 2006 – 2025 |
 
 ## Education
 
 | | |
 |---|---|
-| **Software Developer (Ohjelmistokehittäjä)** | Vamia, remote studies · 2026 |
-| **Library Merkonomi (Kirjastomerkonomi)** | Vocational qualification · 1996 |
+| **Software developer (Ohjelmistokehittäjä)** | Vamia, remote studies · 2026 |
+| **Library merkonom (Kirjastomerkonomi)** | Vocational qualification · 1996 |
 | **Matriculation examination (Ylioppilas)** | Finnish upper secondary school · 1991 |
 
 ## Tech stack
 
 | Area | Technologies |
 |---|---|
-| Languages | PHP, JavaScript, C#, Kotlin, Python, SQL |
+| Programming languages | PHP, JavaScript, C#, Kotlin, Python, SQL |
 | Web | HTML5, CSS3, Bootstrap 5, vanilla JS |
-| Back end & server | Apache (mod_rewrite, .htaccess, caching, gzip), cron, cPanel |
+| Server | Apache / LiteSpeed (mod_rewrite, .htaccess, caching, gzip), cron, cPanel |
 | Databases | MySQL, PDO, phpMyAdmin, MySQL Connector/NET |
+| Security | WebAuthn / FIDO2 (passkeys), OpenSSL, OWASP Top 10 |
 | Desktop | .NET WinForms |
-| Testing | PHPUnit |
+| Testing | PHPUnit, Playwright |
+| Images | Python (Pillow) |
 | SEO | Open Graph, schema.org JSON-LD, hreflang, sitemaps |
 
 ---
 
-## Featured projects
+## Main projects
+
+### 🔐 manalasdungeon.lv — a trilingual website with passwordless administration
+
+**Live:** [manalasdungeon.lv](https://manalasdungeon.lv) · **Case study:** [portfolio](https://manalasdungeon.lv/portfolio.php?lang=en)
+**Tech:** PHP 8.4 · MySQL · WebAuthn / FIDO2 · OpenSSL · JavaScript · Python (Pillow) · Playwright
+
+A personal site, news and travel blog, Vidzeme travel guide and yoga page — built from scratch without a CMS.
+
+- **Passwordless admin with passkeys (WebAuthn / FIDO2):** the admin pages open only on a registered device with a fingerprint, face or PIN. The server side is plain PHP with no external libraries — CBOR decoding, COSE → PEM key conversion and ES256 / RS256 signature verification with OpenSSL
+- **Security following the OWASP Top 10:** PDO prepared statements, output escaping with `htmlspecialchars()`, CSRF tokens on every admin action, session timeouts, HTTPS only, safe image uploads
+- **Testing:** 38 unit tests for the passkey cryptography and browser tests with a virtual FIDO2 authenticator (Playwright)
+- **Three languages** on every page with hreflang, Open Graph and a multilingual sitemap; clean URLs with mod_rewrite (for example `/linkit`)
+- **Database-driven content:** news and travel blog in one table with a category, a custom editor with image uploads
+- **Image processing with Python (Pillow):** duotone tints, line drawings turned into transparent PNGs, Open Graph images and a QR code
+
+---
 
 ### 📚 Manalan Kirjasto — library management system
 
 **Live:** [manalasdungeon.lv/verkkokirjasto](https://manalasdungeon.lv/verkkokirjasto/)
-**Stack:** PHP · JavaScript · MySQL · C# WinForms
+**Tech:** PHP · JavaScript · MySQL · C# WinForms
 
-One library system, built twice: as a web application and as a desktop application on the same MySQL database.
+One library system, built twice: as a web application and as a desktop application sharing one MySQL database.
 
 **Web version**
-- Loans, returns and customer registration, with an automatic return system run by cron
-- Security work: SQL injection fixes, PIN hashing with `password_hash()` and `random_int()`, brute-force protection, admin PIN reset, and a fix for a race condition in customer registration
+- Book loans, returns and customer registration, plus an automatic return system run by cron
+- Security: SQL injection prevention, PIN hashing with `password_hash()` and `random_int()`, brute-force protection, admin PIN reset and a race-condition fix in customer registration
 - PHPUnit test suite with 25 test cases using PDO mocks
-- Code review that fixed more than 23 issues, including a `GROUP BY` bug in loan queries
-- Gothic dark theme with an animated splash screen; documentation written in Word
+- More than 23 defects fixed in code review, including a `GROUP BY` bug in the loan queries
+- Gothic dark theme with an animated splash screen; documentation in Word format
 
 **Desktop version (C# WinForms)**
-- Search-to-lend workflow
-- SSL-hardened database connection, typed ListBox objects and an `OperationResult` pattern for error handling
+- “Search and lend” workflow
+- SSL-protected database connection, typed ListBox objects and an `OperationResult` model for error handling
 
 ---
 
-### 🌊 Vitrupes Pludmale — tourism website
+### 🌊 Vitrupes Pludmale — travel website
 
 **Live:** [manalasdungeon.lv/vitrupe](https://manalasdungeon.lv/vitrupe/)
-**Stack:** PHP · Bootstrap 5.3 · JavaScript · MySQL · Apache
+**Tech:** PHP · Bootstrap 5.3 · JavaScript · MySQL · Apache
 
-A tourism website about Vitrupe beach on the Vidzeme coast of Latvia, with a modern visual design based on traditional Latvian colours and woven-band patterns.
+A travel website about Vitrupe beach on the Vidzeme coast, with a modern design based on traditional Latvian colours and woven-belt patterns.
 
-- **Three languages** (Latvian, English, Finnish) using PHP language files, with clean `/en/` and `/fi/` URLs via mod_rewrite
-- **Performance:** upgraded Bootstrap 4 → 5.3 and removed jQuery, cutting JavaScript from 252 KB to 80 KB; cache busting with `filemtime`, Apache caching and gzip; optimised photos (32.9 MB → 3.4 MB)
-- **SEO:** hreflang, a multilingual sitemap, Open Graph and Twitter cards, and schema.org `TouristAttraction` structured data
-- **Guestbook with moderation:** CSRF protection, honeypot, rate limiting, safe link rendering, and a bcrypt-protected admin panel where new messages wait for approval
-- Image gallery with lightbox, scroll animations and a beach-sound button
+- **Three languages** (Latvian, English, Finnish) with PHP language files and clean `/en/` and `/fi/` URLs using mod_rewrite
+- **Performance:** moving from Bootstrap 4 to 5.3 and removing jQuery cut JavaScript from 252 KB to 80 KB; cache busting with `filemtime`, Apache caching and gzip; optimised photos (32.9 MB → 3.4 MB)
+- **SEO:** hreflang, multilingual sitemap, Open Graph and Twitter cards, schema.org `TouristAttraction` structured data
+- **Moderated guestbook:** CSRF protection, honeypot, rate limiting, safe link rendering and an admin panel with passkey sign-in where new entries wait for approval
+- Image gallery with a lightbox, scroll animations and a sea-sound button
 
 ---
 
 ### 🐦 Lintujen tunnistus — bird identification game
 
-**Live:** [manalasdungeon.lv/birdgame](https://www.manalasdungeon.lv/birdgame/)
-**Stack:** PHP · JavaScript · CSS
+**Live:** [manalasdungeon.lv/birdgame](https://manalasdungeon.lv/birdgame/)
+**Tech:** PHP · JavaScript · CSS
 
-An educational game built for **"Sula", the library bus in Heinola**, where visitors learn to recognise Finnish birds.
+An educational game built for Heinola library’s bus **“Sula”**, where visitors learn to identify Finnish birds.
 
-- 14 bird species, each with an info card (scientific name, habitat, fun fact)
-- Three languages (Finnish, English, Latvian) with a flag-button language switcher
-- Questions shuffled per session, card-based interface designed for the library bus
+- 14 bird species, each with its own info card (scientific name, habitat, a fun fact)
+- Three languages (Finnish, English, Latvian) with flag buttons for switching
+- Questions are shuffled every session; a card interface designed for the library bus
 
 ---
 
@@ -106,6 +124,7 @@ An educational game built for **"Sula", the library bus in Heinola**, where visi
 
 - **Email:** marko.nakari@inbox.lv
 - **Website:** [manalasdungeon.lv](https://manalasdungeon.lv)
+- **Portfolio:** [manalasdungeon.lv/portfolio.php](https://manalasdungeon.lv/portfolio.php?lang=en)
 - **LinkedIn:** [linkedin.com/in/manalainen](https://www.linkedin.com/in/manalainen/)
 - **GitHub:** [github.com/ManalasDungeon](https://github.com/ManalasDungeon)
-- **Location:** Heinola, Finland — open to relocating to Latvia or working remotely
+- **Location:** Heinola, Finland — ready to relocate to Latvia or work remotely
