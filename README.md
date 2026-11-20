@@ -58,6 +58,7 @@ A personal site, news and travel blog, Vidzeme travel guide and yoga page — bu
 - **Security following the OWASP Top 10:** PDO prepared statements, output escaping with `htmlspecialchars()`, CSRF tokens on every admin action, session timeouts, HTTPS only, safe image uploads
 - **Testing:** 38 unit tests for the passkey cryptography and browser tests with a virtual FIDO2 authenticator (Playwright)
 - **Three languages** on every page with hreflang, Open Graph and a multilingual sitemap; clean URLs with mod_rewrite (for example `/linkit`)
+- **Private feedback form:** a pop-up `<dialog>` on the home page sends comments straight to email — CSRF token, honeypot, time trap, per-IP and site-wide limits, and email header injection prevention; works without JavaScript too
 - **Database-driven content:** news and travel blog in one table with a category, a custom editor with image uploads
 - **Image processing with Python (Pillow):** duotone tints, line drawings turned into transparent PNGs, Open Graph images and a QR code
 
@@ -128,3 +129,4 @@ An educational game built for Heinola library’s bus **“Sula”**, where visi
 - **LinkedIn:** [linkedin.com/in/manalainen](https://www.linkedin.com/in/manalainen/)
 - **GitHub:** [github.com/ManalasDungeon](https://github.com/ManalasDungeon)
 - **Location:** Heinola, Finland — ready to relocate to Latvia or work remotely
+- **Registered in Latvia:** I have a Latvian personal code (personas kods) and an official e-address (e-adrese) on Latvija.gov.lv, which makes hiring and paperwork in Latvia simpler

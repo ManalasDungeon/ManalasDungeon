@@ -58,6 +58,7 @@ Personīga vietne, ziņu un ceļojumu emuārs, Vidzemes ceļvedis un jogas lapa 
 - **Drošība pēc OWASP Top 10:** PDO sagatavotie vaicājumi, izvades aizsardzība ar `htmlspecialchars()`, CSRF žetoni visām administratora darbībām, sesijas noildze, tikai HTTPS, droša attēlu augšupielāde
 - **Testēšana:** 38 vienībtesti passkey kriptogrāfijai un pārlūka testi ar virtuālu FIDO2 autentifikatoru (Playwright)
 - **Trīs valodas** katrā lapā ar hreflang, Open Graph un daudzvalodu vietnes karti; tīri URL ar mod_rewrite (piemēram, `/linkit`)
+- **Privāta atsauksmju forma:** sākumlapas uznirstošais logs (`<dialog>`) sūta komentārus tieši uz e-pastu — CSRF žetons, honeypot, laika slazds, limiti vienai IP adresei un visai vietnei, e-pasta galveņu injekciju novēršana; darbojas arī bez JavaScript
 - **Saturs no datubāzes:** ziņu un ceļojumu emuārs vienā tabulā ar kategoriju, paša veidots redaktors ar attēlu augšupielādi
 - **Attēlu apstrāde ar Python (Pillow):** divtoņu krāsojums, līniju zīmējumi caurspīdīgos PNG, Open Graph attēli un QR kods
 
@@ -128,3 +129,4 @@ Izglītojoša spēle, kas izveidota Heinolas bibliotēkas autobusam **"Sula"**, 
 - **LinkedIn:** [linkedin.com/in/manalainen](https://www.linkedin.com/in/manalainen/)
 - **GitHub:** [github.com/ManalasDungeon](https://github.com/ManalasDungeon)
 - **Atrašanās vieta:** Heinola, Somija — gatavs pārcelties uz Latviju vai strādāt attālināti
+- **Reģistrēts Latvijā:** man ir Latvijas personas kods un oficiālā e-adrese portālā Latvija.gov.lv, kas atvieglo darba attiecību un dokumentu noformēšanu Latvijā
