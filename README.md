@@ -39,7 +39,7 @@ My strongest area is **PHP/MySQL web development in LAMP environments and on sha
 | Databases | MySQL, PDO, phpMyAdmin, MySQL Connector/NET |
 | Security | WebAuthn / FIDO2 (passkeys), OpenSSL, OWASP Top 10 |
 | Desktop | .NET WinForms |
-| Testing | PHPUnit, Playwright |
+| Testing | PHPUnit, Playwright, axe-core, GitHub Actions |
 | Images | Python (Pillow) |
 | SEO | Open Graph, schema.org JSON-LD, hreflang, sitemaps |
 
@@ -49,14 +49,15 @@ My strongest area is **PHP/MySQL web development in LAMP environments and on sha
 
 ### 🔐 manalasdungeon.lv — a trilingual website with passwordless administration
 
-**Live:** [manalasdungeon.lv](https://manalasdungeon.lv) · **Case study:** [portfolio](https://manalasdungeon.lv/portfolio.php?lang=en)
+**Live:** [manalasdungeon.lv](https://manalasdungeon.lv) · **Case study:** [portfolio](https://manalasdungeon.lv/portfolio.php?lang=en) · **Code:** [GitHub](https://github.com/ManalasDungeon/manalasdungeon.lv) [![Testit](https://github.com/ManalasDungeon/manalasdungeon.lv/actions/workflows/testit.yml/badge.svg)](https://github.com/ManalasDungeon/manalasdungeon.lv/actions/workflows/testit.yml)
 **Tech:** PHP 8.4 · MySQL · WebAuthn / FIDO2 · OpenSSL · JavaScript · Python (Pillow) · Playwright
 
 A personal site, news and travel blog, Vidzeme travel guide and yoga page — built from scratch without a CMS.
 
 - **Passwordless admin with passkeys (WebAuthn / FIDO2):** the admin pages open only on a registered device with a fingerprint, face or PIN. The server side is plain PHP with no external libraries — CBOR decoding, COSE → PEM key conversion and ES256 / RS256 signature verification with OpenSSL
 - **Security following the OWASP Top 10:** PDO prepared statements, output escaping with `htmlspecialchars()`, CSRF tokens on every admin action, session timeouts, HTTPS only, safe image uploads
-- **Testing:** 38 unit tests for the passkey cryptography and browser tests with a virtual FIDO2 authenticator (Playwright)
+- **Testing:** 87 automated page tests run in GitHub Actions on every push — three languages, desktop and phone, forms, CSP and accessibility (axe-core, WCAG 2.1 AA) — plus 38 unit tests for the passkey cryptography and browser tests with a virtual FIDO2 authenticator (Playwright)
+- **Privacy by default:** Google Analytics loads only after consent, with a switch on the trilingual privacy policy page; self-hosted fonts; enforced Content-Security-Policy and HSTS
 - **Three languages** on every page with hreflang, Open Graph and a multilingual sitemap; clean URLs with mod_rewrite (for example `/linkit`)
 - **Private feedback form:** a pop-up `<dialog>` on the home page sends comments straight to email — CSRF token, honeypot, time trap, per-IP and site-wide limits, and email header injection prevention; works without JavaScript too
 - **Database-driven content:** news and travel blog in one table with a category, a custom editor with image uploads

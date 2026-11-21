@@ -39,7 +39,7 @@ Mana stiprākā joma ir **PHP/MySQL tīmekļa izstrāde LAMP vidē un koplietoš
 | Datubāzes | MySQL, PDO, phpMyAdmin, MySQL Connector/NET |
 | Drošība | WebAuthn / FIDO2 (passkey), OpenSSL, OWASP Top 10 |
 | Darbvirsma | .NET WinForms |
-| Testēšana | PHPUnit, Playwright |
+| Testēšana | PHPUnit, Playwright, axe-core, GitHub Actions |
 | Attēli | Python (Pillow) |
 | SEO | Open Graph, schema.org JSON-LD, hreflang, vietnes kartes (sitemap) |
 
@@ -49,14 +49,15 @@ Mana stiprākā joma ir **PHP/MySQL tīmekļa izstrāde LAMP vidē un koplietoš
 
 ### 🔐 manalasdungeon.lv — trīsvalodu vietne ar bezparoles administrēšanu
 
-**Tiešsaistē:** [manalasdungeon.lv](https://manalasdungeon.lv) · **Projekta apraksts:** [portfolio](https://manalasdungeon.lv/portfolio.php)
+**Tiešsaistē:** [manalasdungeon.lv](https://manalasdungeon.lv) · **Projekta apraksts:** [portfolio](https://manalasdungeon.lv/portfolio.php) · **Kods:** [GitHub](https://github.com/ManalasDungeon/manalasdungeon.lv) [![Testit](https://github.com/ManalasDungeon/manalasdungeon.lv/actions/workflows/testit.yml/badge.svg)](https://github.com/ManalasDungeon/manalasdungeon.lv/actions/workflows/testit.yml)
 **Tehnoloģijas:** PHP 8.4 · MySQL · WebAuthn / FIDO2 · OpenSSL · JavaScript · Python (Pillow) · Playwright
 
 Personīga vietne, ziņu un ceļojumu emuārs, Vidzemes ceļvedis un jogas lapa — izstrādāta no nulles bez satura pārvaldības sistēmas.
 
 - **Bezparoles administrēšana ar passkey (WebAuthn / FIDO2):** administrēšanas lapas atveras tikai reģistrētā ierīcē ar pirkstu nospiedumu, sejas atpazīšanu vai PIN kodu. Servera puse uzrakstīta tīrā PHP bez ārējām bibliotēkām — CBOR dekodēšana, COSE atslēgu pārveide uz PEM un ES256 / RS256 parakstu pārbaude ar OpenSSL
 - **Drošība pēc OWASP Top 10:** PDO sagatavotie vaicājumi, izvades aizsardzība ar `htmlspecialchars()`, CSRF žetoni visām administratora darbībām, sesijas noildze, tikai HTTPS, droša attēlu augšupielāde
-- **Testēšana:** 38 vienībtesti passkey kriptogrāfijai un pārlūka testi ar virtuālu FIDO2 autentifikatoru (Playwright)
+- **Testēšana:** 87 automātiski lapu testi, kas GitHub Actions vidē tiek palaisti pēc katras izmaiņas — trīs valodas, dators un tālrunis, formas, CSP un pieejamība (axe-core, WCAG 2.1 AA) —, kā arī 38 vienībtesti passkey kriptogrāfijai un pārlūka testi ar virtuālu FIDO2 autentifikatoru (Playwright)
+- **Privātums pēc noklusējuma:** Google Analytics ielādējas tikai pēc piekrišanas, un izvēli var mainīt ar slēdzi trīsvalodu privātuma politikā; fonti no sava servera; Content-Security-Policy un HSTS
 - **Trīs valodas** katrā lapā ar hreflang, Open Graph un daudzvalodu vietnes karti; tīri URL ar mod_rewrite (piemēram, `/linkit`)
 - **Privāta atsauksmju forma:** sākumlapas uznirstošais logs (`<dialog>`) sūta komentārus tieši uz e-pastu — CSRF žetons, honeypot, laika slazds, limiti vienai IP adresei un visai vietnei, e-pasta galveņu injekciju novēršana; darbojas arī bez JavaScript
 - **Saturs no datubāzes:** ziņu un ceļojumu emuārs vienā tabulā ar kategoriju, paša veidots redaktors ar attēlu augšupielādi
